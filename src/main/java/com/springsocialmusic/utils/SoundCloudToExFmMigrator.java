@@ -1,4 +1,4 @@
-package com.springsocial.music.utils;
+package com.springsocialmusic.utils;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
