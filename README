@@ -1,0 +1,4 @@
+Utilities for interacting with music APIs such as SoundCloud and Ex.Fm
+
+Includes an example helper class demonstrating adding SoundCloud tracks favorited by a SoundCloud user
+to an Ex.Fm user's loved tracks.
