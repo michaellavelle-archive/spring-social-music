@@ -1,0 +1,3 @@
+Utilities for interacting with music APIs such as SoundCloud and Ex.Fm
+
+Includes a migrator helper for adding SoundCloud favorities from a SoundCloud user to an Ex.Fm user's loved tracks.
