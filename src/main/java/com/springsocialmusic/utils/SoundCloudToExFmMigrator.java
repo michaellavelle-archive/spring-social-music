@@ -18,6 +18,15 @@ public class SoundCloudToExFmMigrator {
 		this.soundCloudApiKey = soundCloudApiKey;
 	}
 	
+	private void sleepForLimitRate()
+	{
+		try
+		{
+			Thread.sleep(200);
+		}
+		catch (Exception e) {}
+	}
+	
 	public void loveSoundCloudFavoritesOnExFm(String soundCloudUserId,String exFmUserId,String exFmPassword)
 	{		
 		// Construct a new SoundCloudTemplate only authorized by api key, as user-level authorization is not needed
@@ -36,6 +45,7 @@ public class SoundCloudToExFmMigrator {
 			// For each SoundCloud favorite track on current page, love the track on Ex.Fm using the stream url
 			for (Track soundCloudTrack : soundCloudFavorites)
 			{
+				sleepForLimitRate();
 				exFm.songOperations().loveSongBySourceUrl(soundCloudTrack.getStreamUrl());
 			}
 			// Get next page of tracks from SoundCloud if available
