@@ -2,6 +2,7 @@ package com.springsocialmusic.utils;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.social.ResourceNotFoundException;
 import org.springframework.social.exfm.api.ExFm;
 import org.springframework.social.exfm.api.impl.ExFmTemplate;
 import org.springframework.social.soundcloud.api.SoundCloud;
@@ -46,7 +47,14 @@ public class SoundCloudToExFmMigrator {
 			for (Track soundCloudTrack : soundCloudFavorites)
 			{
 				sleepForLimitRate();
-				exFm.songOperations().loveSongBySourceUrl(soundCloudTrack.getStreamUrl());
+				try
+				{
+					exFm.songOperations().loveSongBySourceUrl(soundCloudTrack.getStreamUrl());
+				}
+				catch (ResourceNotFoundException e)
+				{
+					// Failed to love song as Ex.Fm can't find information about the soundcloud track with this url
+				}
 			}
 			// Get next page of tracks from SoundCloud if available
 			if (soundCloudFavorites.hasNextPage()) soundCloudFavorites = soundCloud.usersOperations().userOperations(soundCloudUserId).getFavorites(new PageRequest(pageNumber + 1,soundCloudFetchPageSize));
