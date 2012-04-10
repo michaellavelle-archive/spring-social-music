@@ -1,4 +1,5 @@
-Utilities for interacting with music APIs such as SoundCloud and Ex.Fm
+Sample utility classes, demonstrating interaction with music APIs such as SoundCloud and Ex.Fm using 
+Spring Social Music modules.
 
-Includes an example helper class demonstrating adding SoundCloud tracks favorited by a SoundCloud user
+Includes an example helper class which migrates tracks favorited by a SoundCloud user
 to an Ex.Fm user's loved tracks.
